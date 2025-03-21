@@ -1,0 +1,21 @@
+name: Java Application CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: joshjohanning-org/reusable-workflows/.github/workflows/java-springboot-build.yml@v1.0.14
+    with:
+      runs-on: 'ubuntu-latest'
+      java-version: '17'
+      java-distribution: 'temurin'
+      build-tool: 'maven'
+      tests-enabled: true
+      artifact-name: 'my-app'
+      artifact-path: 'target/*.jar'
